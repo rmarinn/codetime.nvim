@@ -5,8 +5,8 @@ local M = {}
 
 M.setup = function(_)
 	local group = vim.api.nvim_create_augroup("CodeTime", { clear = true })
-	vim.api.nvim_create_autocmd("InsertCharPre", { callback = core.on_insert, group = group })
-	-- vim.api.nvim_create_user_command("CodeTime", "lua require('codetime.data').print_time_today", {})
+	vim.api.nvim_create_autocmd("InsertCharPre", { callback = core._on_insert, group = group })
+	vim.api.nvim_create_autocmd("VimLeave", { callback = data._on_vim_leave, group = group })
 	vim.api.nvim_create_user_command("CodeTime", data.print_time_today, {})
 end
 
